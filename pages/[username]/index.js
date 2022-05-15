@@ -66,8 +66,8 @@ export const postToJSON = (doc) => {
   const data = doc.data();
   return {
     ...data,
-    createdAt: data.createdAt.toMillis(),
-    updatedAt: data.updatedAt.toMillis(),
+    createdAt: data?.createdAt.toMillis(),
+    updatedAt: data?.updatedAt.toMillis(),
   };
 };
 

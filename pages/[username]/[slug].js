@@ -7,9 +7,39 @@ import {
 } from "firebase/firestore";
 import { getUserWithUsername, postToJSON } from ".";
 import { firestore } from "../../lib/firebase";
+import { useDocumentData } from "react-firebase-hooks/firestore";
+import PostContent from "../../components/PostContent";
+import { Box } from "@mantine/core";
 
-const Post = () => {
-  return <main></main>;
+const PostPage = (props) => {
+  const postRef = doc(firestore, props.path);
+  const [realtimePost] = useDocumentData(postRef);
+
+  const post = realtimePost || props.post;
+
+  return (
+    <main>
+      <Box p={40} sx={{ display: "flex" }}>
+        <Box mr={20} sx={{ width: "70%" }}>
+          <section>
+            <PostContent post={post} />
+          </section>
+        </Box>
+
+        <Box
+          pl={20}
+          pr={20}
+          sx={{ border: "1px solid gray", flexGrow: 1, borderRadius: "10px" }}
+        >
+          <aside>
+            <p>
+              <strong>{post.heartCount || 0} 💗</strong>
+            </p>
+          </aside>
+        </Box>
+      </Box>
+    </main>
+  );
 };
 
 export async function getStaticProps({ params }) {
@@ -22,6 +52,7 @@ export async function getStaticProps({ params }) {
   if (userDoc) {
     const postRef = doc(firestore, `users/${userDoc.id}/posts`, slug);
     post = postToJSON(await getDoc(postRef));
+    console.log("HERE IS POST", post);
 
     path = postRef.path;
   }
@@ -54,4 +85,4 @@ export async function getStaticPaths() {
   };
 }
 
-export default Post;
+export default PostPage;
