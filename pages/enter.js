@@ -1,12 +1,13 @@
+import { useContext } from "react";
 import Head from "next/head";
 import { auth } from "../lib/firebase";
 import { useSignInWithGoogle } from "react-firebase-hooks/auth";
 import { signOut } from "firebase/auth";
 import { Box, Button } from "@mantine/core";
+import { UserContext } from "../lib/context";
 
 const EnterPage = () => {
-  const user = null;
-  const username = null;
+  const { user, username } = useContext(UserContext);
   return (
     <main>
       <Box p={80}>
@@ -36,7 +37,7 @@ const SignInButton = () => {
   );
 };
 
-const SignOutButton = () => {
+export const SignOutButton = () => {
   return (
     <Button variant="outline" onClick={() => signOut()}>
       Sign Out
