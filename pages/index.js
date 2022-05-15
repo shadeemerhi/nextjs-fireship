@@ -7,12 +7,12 @@ import styles from "../styles/Home.module.css";
 
 export default function Home() {
   return (
-    <div>
+    <Box p={80}>
       <Link
         href={{ pathname: "/[username]", query: { username: "shadmerhi" } }}
       >
         <Button>Profile</Button>
       </Link>
-    </div>
+    </Box>
   );
 }
