@@ -1,18 +1,17 @@
-import { Box, Button, Center, Container } from "@mantine/core";
-import Head from "next/head";
-import Image from "next/image";
-import Link from "next/link";
-import Spinner from "../components/Loader";
-import styles from "../styles/Home.module.css";
+import { Box, Button } from "@mantine/core";
+import toast from "react-hot-toast";
 
 export default function Home() {
   return (
     <Box p={80}>
-      <Link
+      {/* <Link
         href={{ pathname: "/[username]", query: { username: "shadmerhi" } }}
       >
         <Button>Profile</Button>
-      </Link>
+      </Link> */}
+      <Button onClick={() => toast.success("Successfully saved")}>
+        Send Message
+      </Button>
     </Box>
   );
 }
