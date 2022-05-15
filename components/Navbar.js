@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { Box, Button, Image, Stack } from "@mantine/core";
+import { Avatar, Box, Button, Image, Stack } from "@mantine/core";
 import Link from "next/link";
 import { UserContext } from "../lib/context";
 import { SignOutButton } from "../pages/enter";
@@ -22,14 +22,14 @@ const Navbar = () => {
         <Button>Feed</Button>
       </Link>
       <Box>
-        {username ? (
+        {user ? (
           <Stack sx={{ flexDirection: "row", alignItems: "center" }}>
             <SignOutButton />
             <Link href="/admin">
               <Button>Write Posts</Button>
             </Link>
             <Link href={`/${username}`}>
-              <Image src={user?.photoURL} />
+              <Avatar src={user?.photoURL} radius="xl" />
             </Link>
           </Stack>
         ) : (

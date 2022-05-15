@@ -39,7 +39,7 @@ const SignInButton = () => {
 
 export const SignOutButton = () => {
   return (
-    <Button variant="outline" onClick={() => signOut()}>
+    <Button variant="outline" onClick={() => signOut(auth)}>
       Sign Out
     </Button>
   );
