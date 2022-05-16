@@ -15,7 +15,7 @@ const PostItem = ({ post, admin = false }) => {
   const minutesToRead = (wordCount / 100 + 1).toFixed(0);
 
   return (
-    <Card p={30} mt={20} sx={{ border: "1px solid gray", cursor: "pointer" }}>
+    <Card p={30} mt={20} sx={{ border: "1px solid gray" }}>
       <Link href={`/${post.username}`}>
         <a>
           <strong>By @{post.username}</strong>

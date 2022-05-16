@@ -10,9 +10,11 @@ import { firestore } from "../../lib/firebase";
 import { useDocumentData } from "react-firebase-hooks/firestore";
 import PostContent from "../../components/PostContent";
 import { Box } from "@mantine/core";
+import HeartButton from "../../components/HeartButton";
 
 const PostPage = (props) => {
   const postRef = doc(firestore, props.path);
+  console.log("HERE IS POST REF", postRef.id);
   const [realtimePost] = useDocumentData(postRef);
 
   const post = realtimePost || props.post;
@@ -29,12 +31,17 @@ const PostPage = (props) => {
         <Box
           pl={20}
           pr={20}
-          sx={{ border: "1px solid gray", flexGrow: 1, borderRadius: "10px" }}
+          sx={{
+            border: "1px solid gray",
+            flexGrow: 1,
+            borderRadius: "10px",
+          }}
         >
           <aside>
             <p>
               <strong>{post.heartCount || 0} 💗</strong>
             </p>
+            <HeartButton postRef={postRef} />
           </aside>
         </Box>
       </Box>
