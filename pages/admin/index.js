@@ -44,7 +44,7 @@ const PostList = () => {
   return (
     <>
       <h1>Manage your posts</h1>
-      <PostFeed posts={posts} />
+      <PostFeed posts={posts} admin />
     </>
   );
 };

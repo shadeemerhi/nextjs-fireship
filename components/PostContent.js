@@ -1,4 +1,4 @@
-import { Card } from "@mantine/core";
+import { Box, Card, Divider } from "@mantine/core";
 import Link from "next/link";
 import ReactMarkdown from "react-markdown";
 
@@ -16,7 +16,8 @@ const PostContent = ({ post }) => {
         <a>@{post?.username}</a>
       </Link>{" "}
       on {createdAt.toISOString()}
-      <ReactMarkdown>{post?.content}</ReactMarkdown>
+      <Divider />
+      <Box dangerouslySetInnerHTML={{ __html: post?.content }}></Box>
     </Card>
   );
 };

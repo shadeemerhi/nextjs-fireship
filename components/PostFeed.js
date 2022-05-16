@@ -15,7 +15,7 @@ const PostItem = ({ post, admin = false }) => {
   const minutesToRead = (wordCount / 100 + 1).toFixed(0);
 
   return (
-    <Card p={30} mt={20} sx={{ border: "1px solid gray" }}>
+    <Card p={30} mt={20} sx={{ border: "1px solid gray", cursor: "pointer" }}>
       <Link href={`/${post.username}`}>
         <a>
           <strong>By @{post.username}</strong>
@@ -44,7 +44,7 @@ const PostItem = ({ post, admin = false }) => {
             </h3>
           </Link>
 
-          {post.published ? <p>Live</p> : <p>Unpublished</p>}
+          {post.published ? <p>Public</p> : <p>Unpublished</p>}
         </>
       )}
     </Card>
